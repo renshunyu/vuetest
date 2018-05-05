@@ -10,7 +10,7 @@
   </head>
   <body>
      <div id="aaa" class="img2" :style="img">
-    <div id="app" class="gunk">
+    <div id="app" class="gunk" style="float: left;">
       <vue-seamless-scroll :data="listData" :class-option="classOption"
                  @copy-data="listData = listData.concat(listData)"
                  class="warp">
@@ -21,11 +21,23 @@
         </ul>
       </vue-seamless-scroll>
 	</div>
+	<div id="tubiao1" class="biao" style="width: 348px;height:248px;float: left;"></div>
+	<div id="tubiao2" class="biao" style="width: 348px;height:248px;float: left;"></div>
+	<div id="tubiao3" class="biao" style="width: 348px;height:248px;float: left;"></div>
+	<div id="tubiao4" class="biao" style="width: 348px;height:248px;float: left;"></div>
+	<div id="tubiao5" class="biao" style="width: 348px;height:248px;float: left;"></div>
+	<div id="tubiao6" class="biao" style="width: 348px;height:248px;float: left;"></div>
+	<div id="tubiao7" class="biao" style="width: 348px;height:248px;float: left;"></div>
+	<div id="tubiao8" class="biao" style="width: 348px;height:248px;float: left;"></div>
+	<div id="tubiao9" class="biao" style="width: 348px;height:248px;float: left;"></div>
+
+	</div>
 	
 	</div>
     <script src="./vue.js"></script>
     <script src="./vue-seamless-scroll.min.js"></script>
-    <script>
+	<script src="./echarts.min.js"></script>
+    <script >
      var gun =new Vue({
       el: '#aaa',
       data: {
@@ -68,8 +80,44 @@
        }
       }
      })
+	 
+	 
+
+// 指定图表的配置项和数据
+var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+};
+
+// 基于准备好的dom，初始化echarts实例
+var myChart1 = echarts.init(document.getElementById('tubiao1'));
+// 使用刚指定的配置项和数据显示图表。
+myChart1.setOption(option);
+echarts.init(document.getElementById('tubiao2')).setOption(option);
+echarts.init(document.getElementById('tubiao3')).setOption(option);
+echarts.init(document.getElementById('tubiao4')).setOption(option);
+echarts.init(document.getElementById('tubiao5')).setOption(option);
+echarts.init(document.getElementById('tubiao6')).setOption(option);
+echarts.init(document.getElementById('tubiao7')).setOption(option);
+echarts.init(document.getElementById('tubiao8')).setOption(option);
+echarts.init(document.getElementById('tubiao9')).setOption(option);
+		
     </script>
-	    <style>
+<style>
 		#aaa {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -85,9 +133,11 @@
   background-size: cover;
   background-color: #eee;
   z-index:-1;
+  border-radius: 25px;
+  opacity:0.8;
 }
 .gunk{
-  width:300px;
+  width:290px;
   height:740px;
   background-position: top center;
   background-repeat:  no-repeat;
@@ -98,11 +148,26 @@
   border-style:solid;
   border-width:5px solid rgba(0, 0, 0, 0.5);
   border-color:#ffffff;
-  
+  border-radius: 25px;
 }
+
+.biao{
+  width:348px;
+  height:248px;
+  background-position: top center;
+  background-repeat:  no-repeat;
+  background-size: cover;
+  opacity:1;
+  z-index:-1;
+  border-style:solid;
+  border-width:1px
+}
+
+
+
       .warp {
         height: 740px;
-        width: 300px;
+        width: 290px;
         overflow: hidden;
       }
       .warp ul {
