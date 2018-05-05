@@ -3,20 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>菜鸟教程(runoob.com)</title>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
-<div id="app" class="img2" :style="img">
-</div>
-
-<script>
-var app = new Vue ({
-  el: '#app',
-  data: {
-      img: 'background-image: url(./backgroundImage.jpg);'
-  }
-})
-</script>
+<script src="./vue.js"></script>
+<script src="./vue-seamless-scroll.min.js"></script>
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -26,14 +14,143 @@ var app = new Vue ({
   color: #2c3e50;
 }
 .img2{
-  width:1366px;
-  height:768px;
+  width:1350px;
+  height:750px;
   background-position: top center;
   background-repeat:  no-repeat;
   background-size: cover;
   background-color: #eee;
   z-index:-1;
 }
+.gunk{
+  width:300px;
+  height:750px;
+  background-position: top center;
+  background-repeat:  no-repeat;
+  background-size: cover;
+  background-color: #eee;
+  z-index:-1;
+}
+.warp {
+  height: 1350px;
+  width: 300px;
+  overflow: hidden;
+}
+.warp ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+}
+.warp li {
+  height: 30px;
+  line-height: 30px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
 </style>
+</head>
+<body>
+<div id="app" class="img2" :style="img">
+<div id="gun" class="gunk">
+      <vue-seamless-scroll  :data="listData" :class-option="classOption"
+                 @copy-data="listData = listData.concat(listData)"
+                 class="warp">
+        <ul class="item">
+          <li v-for="item in listData"><span class="title" v-text="item.title"></span><span class="date"
+                                                   v-text="item.date"></span>
+          </li>
+        </ul>
+      </vue-seamless-scroll>
+</div>
+</div>
+<script>
+var app = new Vue ({
+  el: '#app',
+  data: {
+      img: 'background-image: url(./backgroundImage.jpg);'
+  },
+      data: {
+       listData: [{
+        'title': '无缝滚动第一行无缝滚动第一行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第二行无缝滚动第二行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第三行无缝滚动第三行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第四行无缝滚动第四行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第五行无缝滚动第五行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第六行无缝滚动第六行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第七行无缝滚动第七行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第八行无缝滚动第八行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第九行无缝滚动第九行',
+        'date': '2017-12-16'
+       }]
+      },
+      computed: {
+       classOption: function () {
+        return {
+         step: 0.5,
+         limitMoveNum: 5
+        }
+       }
+      }
+})
+var gun = new Vue({
+      el: '#gun',
+      data: {
+       listData: [{
+        'title': '无缝滚动第一行无缝滚动第一行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第二行无缝滚动第二行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第三行无缝滚动第三行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第四行无缝滚动第四行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第五行无缝滚动第五行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第六行无缝滚动第六行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第七行无缝滚动第七行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第八行无缝滚动第八行',
+        'date': '2017-12-16'
+       }, {
+        'title': '无缝滚动第九行无缝滚动第九行',
+        'date': '2017-12-16'
+       }]
+      },
+      computed: {
+       classOption: function () {
+        return {
+         step: 0.5,
+         limitMoveNum: 5
+        }
+       }
+      }
+     })
+</script>
+
 </body>
 </html>

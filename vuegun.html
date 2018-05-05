@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p slot="title" class="box-card fontcolor" style="text-align: left; padding: 0.2vh 0vw">敏感事件</p>
+    <seamless-scroll :data="listData" class="seamless-warp">
+      <ul class="event_list">
+        <li v-for="(item, i ) in listData" :key="i">
+          <span class="date fontcolor" v-text="item.date"></span>
+          <br/>
+          <span class="title fontcolor" v-text="item.event"></span>
+        </li>
+      </ul>
+    </seamless-scroll>
+</div>
+
+<script>
+//import scroll from 'vue-seamless-scroll'
+var app = new Vue ({
+  el:"#app",
+  data:{
+  listData: [
+	  { id: 0, text: '蔬菜' },
+      { id: 1, text: '奶酪' },
+      { id: 2, text: '随便其它什么人吃的东西' }
+	]
+    }
+  })
+
+</script>
+<style>
+  .fontcolor {
+    color: #fafbfd;
+  }
+
+  .seamless-warp {
+    width: 100%;
+    height: 40vh;
+    overflow: hidden;
+  }
+
+  .event_list {
+    list-style: none;
+    margin: 0;
+    padding: 0 1vw;
+  }
+
+  .box-card {
+    /* width: 387px; */
+    font-size: 1vw!important;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    font-weight: normal;
+  }
+
+  .event_list > li {
+    margin-bottom: 1vw;
+    text-align: left;
+  }
+  p {
+    height: 100%;
+}
+
+  .date {
+    font: 0.5vw sans-serif;
+  }
+</style>
+</body>
+</html>
