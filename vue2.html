@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app" class="img2" :style="img">
+</div>
+
+<script>
+var app = new Vue ({
+  el: '#app',
+  data: {
+      img: 'background-image: url(./backgroundImage.jpg);'
+  }
+})
+</script>
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+.img2{
+  width:1366px;
+  height:768px;
+  background-position: top center;
+  background-repeat:  no-repeat;
+  background-size: cover;
+  background-color: #eee;
+  z-index:-1;
+}
+</style>
+</body>
+</html>
