@@ -41,7 +41,8 @@
      var gun =new Vue({
       el: '#aaa',
       data: {
-	   img: 'background-image: url(./backgroundImage.jpg);',
+	   img: 'background-image: url(./bg.jpg);',
+	   //imgapp: 'background-image: url(./backgroundImage.jpg);',
        listData: [{
         'title': '无缝滚动第一行无缝滚动第一行',
         'date': '2017-12-16'
@@ -69,7 +70,29 @@
        }, {
         'title': '无缝滚动第九行无缝滚动第九行',
         'date': '2017-12-16'
-       }]
+       }],
+	   option2 : {
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: [0,1, 2, 3, 4, 5, 6, 7, 8, 9,10, 11, 12, 13, 14, 15]
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        name:'计划',
+        type:'line',
+        stack: '剩余1',
+    },
+    {
+        data: [120, 113, 107, 100, 90, 81, 75],
+        name:'执行',
+        type:'line',
+        stack: '剩余2',
+    }]
+}
       },
       computed: {
        classOption: function () {
@@ -78,13 +101,16 @@
          limitMoveNum: 5
         }
        }
-      }
+      },
+	  mounted:function(){  
+          echarts.init(document.getElementById('tubiao2')).setOption(this.option2);
+        } 
      })
 	 
 	 
 
 // 指定图表的配置项和数据
-var option = {
+var option1 = {
             title: {
                 text: 'ECharts 入门示例'
             },
@@ -102,19 +128,42 @@ var option = {
                 data: [5, 20, 36, 10, 10, 20]
             }]
 };
+var option2 = {
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: [0,1, 2, 3, 4, 5, 6, 7, 8, 9,10, 11, 12, 13, 14, 15]
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        name:'计划',
+        type:'line',
+        stack: '剩余1',
+    },
+    {
+        data: [120, 113, 107, 100, 90, 81, 75],
+        name:'执行',
+        type:'line',
+        stack: '剩余2',
+    }]
+};
+
 
 // 基于准备好的dom，初始化echarts实例
 var myChart1 = echarts.init(document.getElementById('tubiao1'));
 // 使用刚指定的配置项和数据显示图表。
-myChart1.setOption(option);
-echarts.init(document.getElementById('tubiao2')).setOption(option);
-echarts.init(document.getElementById('tubiao3')).setOption(option);
-echarts.init(document.getElementById('tubiao4')).setOption(option);
-echarts.init(document.getElementById('tubiao5')).setOption(option);
-echarts.init(document.getElementById('tubiao6')).setOption(option);
-echarts.init(document.getElementById('tubiao7')).setOption(option);
-echarts.init(document.getElementById('tubiao8')).setOption(option);
-echarts.init(document.getElementById('tubiao9')).setOption(option);
+myChart1.setOption(option1);
+//echarts.init(document.getElementById('tubiao2')).setOption(option2);
+echarts.init(document.getElementById('tubiao3')).setOption(option1);
+echarts.init(document.getElementById('tubiao4')).setOption(option1);
+echarts.init(document.getElementById('tubiao5')).setOption(option1);
+echarts.init(document.getElementById('tubiao6')).setOption(option1);
+echarts.init(document.getElementById('tubiao7')).setOption(option1);
+echarts.init(document.getElementById('tubiao8')).setOption(option1);
+echarts.init(document.getElementById('tubiao9')).setOption(option1);
 		
     </script>
 <style>
@@ -133,7 +182,7 @@ echarts.init(document.getElementById('tubiao9')).setOption(option);
   background-size: cover;
   background-color: #eee;
   z-index:-1;
-  border-radius: 25px;
+  /*border-radius: 25px;*/
   opacity:0.8;
 }
 .gunk{
@@ -148,7 +197,7 @@ echarts.init(document.getElementById('tubiao9')).setOption(option);
   border-style:solid;
   border-width:5px solid rgba(0, 0, 0, 0.5);
   border-color:#ffffff;
-  border-radius: 25px;
+  /*border-radius: 25px;*/
 }
 
 .biao{
