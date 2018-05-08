@@ -218,6 +218,7 @@
       },
 	  mounted:function(){  
           echarts.init(document.getElementById('tubiao2')).setOption(this.option2);
+		  setInterval(()=>{this.option2.series[1].data=[120, 113, 107, 100, 90, 81, --this.option2.series[1].data[6]];},1000);
         } 
      })
 	 
@@ -291,7 +292,7 @@ echarts.init(document.getElementById('tubiao6')).setOption(option1);
 //echarts.init(document.getElementById('tubiao7')).setOption(option1);
 //echarts.init(document.getElementById('tubiao8')).setOption(option1);
 //echarts.init(document.getElementById('tubiao9')).setOption(option1);
-		
+
     </script>
 <style>
 		#aaa {
