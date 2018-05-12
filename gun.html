@@ -21,14 +21,19 @@
         </ul>
       </vue-seamless-scroll>
 	</div>
-	<div id="tubiao1" class="zhubiao" style="width: 698px;height:498px;float: left;"></div>
-	<div id="tubiao2" class="biao" style="width: 348px;height:248px;float: left;"></div>
+	<div id="tubiao1" class="zhubiao" style="width: 698px;height:498px;float: left;">
+	<chart style="width: 698px;height:498px;float: left;" :options="option1"></chart></div>
+	
+	<div id="tubiao2" class="biao" style="width: 348px;height:248px;float: left;">
+	<chart style="width: 348px;height:248px;" :options="option2"></chart></div>
 	<div id="tubiao3" class="biao" style="width: 348px;height:248px;float: left;">
-	<chart style="width: 348px;height:248px;" :options="option2"></chart>
-	</div>
-	<div id="tubiao4" class="biao" style="width: 348px;height:248px;float: left;"></div>
-	<div id="tubiao5" class="biao" style="width: 348px;height:248px;float: left;"></div>
-	<div id="tubiao6" class="biao" style="width: 348px;height:248px;float: left;"></div>
+	<chart style="width: 348px;height:248px;" :options="option3"></chart></div>
+	<div id="tubiao4" class="biao" style="width: 348px;height:248px;float: left;">
+	<chart style="width: 348px;height:248px;" :options="option4"></chart></div>
+	<div id="tubiao5" class="biao" style="width: 348px;height:248px;float: left;">
+	<chart style="width: 348px;height:248px;" :options="option5"></chart></div>
+	<div id="tubiao6" class="biao" style="width: 348px;height:248px;float: left;">
+	<chart style="width: 348px;height:248px;" :options="option6"></chart></div>
 	<!-- <div id="tubiao7" class="biao" style="width: 348px;height:248px;float: left;"></div> -->
 	<!-- <div id="tubiao8" class="biao" style="width: 348px;height:248px;float: left;"></div> -->
 	<!-- <div id="tubiao9" class="biao" style="width: 348px;height:248px;float: left;"></div> -->
@@ -40,13 +45,14 @@
     <script src="./vue-seamless-scroll.min.js"></script>
 	<script src="./echarts.min.js"></script>
 	<script src="./vue-echarts.js"></script>
+	<script src="./axios.min.js"></script>
     <script >
 
 	Vue.component('chart', VueECharts)
      var gun =new Vue({
       el: '#aaa',
       data: {
-	   img: 'background-image: url(./bg.jpg);',
+	   img: 'background-image: url(./bg1.jpg);',
 	   //imgapp: 'background-image: url(./backgroundImage.jpg);',
        listData: [{
         'title': '无缝滚动第一行无缝滚动第一行',
@@ -178,7 +184,7 @@
         'title': '无缝滚动第九行无缝滚动第九行',
         'date': '2017-12-16'
        }],
-	   option2 : {
+	   option1 : {
 	   title: {
                 text: '迭代燃尽图',
 				textStyle: {  
@@ -206,6 +212,151 @@
         type:'line',
         stack: '剩余2',
     }]
+},
+option2: {
+	   title: {
+                text: '迭代燃尽图',
+				textStyle: {  
+                fontWeight: 'normal', 
+                color: '#408829'  
+            }
+			},
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: [0,1, 2, 3, 4, 5, 6, 7, 8, 9,10, 11, 12, 13, 14, 15]
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        name:'计划',
+        type:'line',
+        stack: '剩余1',
+    },
+    {
+        data: [60, 113, 107, 100, 90, 81, 75],
+        name:'执行',
+        type:'line',
+        stack: '剩余2',
+    }]
+},
+option3 : {
+	   title: {
+                text: '迭代燃尽图',
+				textStyle: {  
+                fontWeight: 'normal', 
+                color: '#408829'  
+            }
+			},
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: [0,1, 2, 3, 4, 5, 6, 7, 8, 9,10, 11, 12, 13, 14, 15]
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        name:'计划',
+        type:'line',
+        stack: '剩余1',
+    },
+    {
+        data: [120, 13, 107, 100, 90, 81, 75],
+        name:'执行',
+        type:'line',
+        stack: '剩余2',
+    }]
+},
+option4 : {
+	   title: {
+                text: '迭代燃尽图',
+				textStyle: {  
+                fontWeight: 'normal', 
+                color: '#408829'  
+            }
+			},
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: [0,1, 2, 3, 4, 5, 6, 7, 8, 9,10, 11, 12, 13, 14, 15]
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        name:'计划',
+        type:'line',
+        stack: '剩余1',
+    },
+    {
+        data: [120, 113, 14, 100, 90, 81, 75],
+        name:'执行',
+        type:'line',
+        stack: '剩余2',
+    }]
+},
+option5 : {
+	   title: {
+                text: '迭代燃尽图',
+				textStyle: {  
+                fontWeight: 'normal', 
+                color: '#408829'  
+            }
+			},
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: [0,1, 2, 3, 4, 5, 6, 7, 8, 9,10, 11, 12, 13, 14, 15]
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        name:'计划',
+        type:'line',
+        stack: '剩余1',
+    },
+    {
+        data: [120, 113, 107, 3, 90, 81, 75],
+        name:'执行',
+        type:'line',
+        stack: '剩余2',
+    }]
+},
+option6 : {
+	   title: {
+                text: '迭代燃尽图',
+				textStyle: {  
+                fontWeight: 'normal', 
+                color: '#408829'  
+            }
+			},
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: [0,1, 2, 3, 4, 5, 6, 7, 8, 9,10, 11, 12, 13, 14, 15]
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        name:'计划',
+        type:'line',
+        stack: '剩余1',
+    },
+    {
+        data: [120, 113, 107, 100, 5, 81, 75],
+        name:'执行',
+        type:'line',
+        stack: '剩余2',
+    }]
 }
       },
       computed: {
@@ -217,8 +368,19 @@
        }
       },
 	  mounted:function(){  
-          echarts.init(document.getElementById('tubiao2')).setOption(this.option2);
-		  setInterval(()=>{this.option2.series[1].data=[120, 113, 107, 100, 90, 81, --this.option2.series[1].data[6]];},1000);
+          //echarts.init(document.getElementById('tubiao2')).setOption(this.option2);
+		  //echarts.init(document.getElementById('tubiao3')).setOption(this.option3);
+		  //echarts.init(document.getElementById('tubiao4')).setOption(this.option4);
+		  //echarts.init(document.getElementById('tubiao5')).setOption(this.option5);
+		  //echarts.init(document.getElementById('tubiao6')).setOption(this.option6);
+
+		  //setInterval(()=>{this.option2.series[1].data=[120, 113, 107, 100, 90, 81, --this.option2.series[1].data[6]];},1000);
+		  setInterval(()=>{axios.get('/getdata/api/admin/siaserie').then(res=>{this.option1.series=res.data});},5000);
+		  setInterval(()=>{axios.get('/getdata/api/admin/siaserie').then(res=>{this.option2.series=res.data});},5000);
+		  setInterval(()=>{axios.get('/getdata/api/admin/ssaserie').then(res=>{this.option3.series=res.data});},5000);
+		  setInterval(()=>{axios.get('/getdata/api/admin/uapserie').then(res=>{this.option4.series=res.data});},5000);
+		  setInterval(()=>{axios.get('/getdata/api/admin/fortserie').then(res=>{this.option5.series=res.data});},5000);
+		  setInterval(()=>{axios.get('/getdata/api/admin/senserie').then(res=>{this.option6.series=res.data});},5000);
         } 
      })
 	 
@@ -281,14 +443,14 @@ var option2 = {
 
 
 // 基于准备好的dom，初始化echarts实例
-var myChart1 = echarts.init(document.getElementById('tubiao1'));
+//var myChart1 = echarts.init(document.getElementById('tubiao1'));
 // 使用刚指定的配置项和数据显示图表。
-myChart1.setOption(option1);
+//myChart1.setOption(option1);
 //echarts.init(document.getElementById('tubiao2')).setOption(option2);
 //echarts.init(document.getElementById('tubiao3')).setOption(option1);
-echarts.init(document.getElementById('tubiao4')).setOption(option1);
-echarts.init(document.getElementById('tubiao5')).setOption(option1);
-echarts.init(document.getElementById('tubiao6')).setOption(option1);
+//echarts.init(document.getElementById('tubiao4')).setOption(option1);
+//echarts.init(document.getElementById('tubiao5')).setOption(option1);
+//echarts.init(document.getElementById('tubiao6')).setOption(option1);
 //echarts.init(document.getElementById('tubiao7')).setOption(option1);
 //echarts.init(document.getElementById('tubiao8')).setOption(option1);
 //echarts.init(document.getElementById('tubiao9')).setOption(option1);
