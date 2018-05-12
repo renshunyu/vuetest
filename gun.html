@@ -381,17 +381,8 @@ option6 : {
         type:'line',
         stack: '剩余2',
     }]
-}
-      },
-      computed: {
-       classOption: function () {
-        return {
-         step: 0.5,
-         limitMoveNum: 5
-        }
-       }
-      },
-	  redline:{
+},
+redline:{
             normal:{
                 width:2,  //连线粗细
                 color: "#ff0000"  //连线颜色
@@ -415,7 +406,17 @@ option6 : {
                 color: "#0000e3"  //连线颜色
             }
         },
-	  num:1,
+	  num:0
+      },
+      computed: {
+       classOption: function () {
+        return {
+         step: 0.5,
+         limitMoveNum: 5
+        }
+       }
+      },
+	  
 	  mounted:function(){  
           //echarts.init(document.getElementById('tubiao2')).setOption(this.option2);
 		  //echarts.init(document.getElementById('tubiao3')).setOption(this.option3);
@@ -424,18 +425,13 @@ option6 : {
 		  //echarts.init(document.getElementById('tubiao6')).setOption(this.option6);
 
 		  //setInterval(()=>{this.option2.series[1].data=[120, 113, 107, 100, 90, 81, --this.option2.series[1].data[6]];},1000);
-		  setInterval(()=>{axios.get('/getdata/api/admin/siaserie').then(res=>{this.option1.series=res.data;
-		  this.option1.series[0].lineStyle={normal:{width:2, color: "#0000e3" }};
-		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
-		     this.option1.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
-			 }
-			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
-			 this.option1.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
-			 }else{
-			 this.option1.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
-			 }
-			 };
-		  });},5000);
+		  setInterval(()=>{if(this.num%5==0){this.option1=this.option2;this.num++;}
+		  else if (this.num%5==1){this.option1=this.option3;this.num++;}
+		  else if (this.num%5==2){this.option1=this.option4;this.num++;}
+		  else if (this.num%5==3){this.option1=this.option5;this.num++;}
+		  else{this.option1=this.option6;this.num=0;}
+		  
+		  },5000);
 		  setInterval(()=>{axios.get('/getdata/api/admin/siaserie').then(res=>{this.option2.series=res.data;
 		  this.option2.series[0].lineStyle={normal:{width:2, color: "#0000e3" }};
 		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
