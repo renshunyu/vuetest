@@ -52,7 +52,7 @@
      var gun =new Vue({
       el: '#aaa',
       data: {
-	   img: 'background-image: url(./bg1.jpg);',
+	   img: 'background-image: url(./timg.jpg);',
 	   //imgapp: 'background-image: url(./backgroundImage.jpg);',
        listData: [{
         'title': '无缝滚动第一行无缝滚动第一行',
@@ -195,22 +195,46 @@
     xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: [0,1, 2, 3, 4, 5, 6, 7, 8, 9,10, 11, 12, 13, 14, 15]
+        data: [0,1, 2, 3, 4, 5, 6, 7, 8, 9,10, 11, 12, 13, 14, 15],
+		axisLine:{
+                        lineStyle:{
+                            color:'#000000',
+                            width:3,//这里是为了突出显示加上的
+                        }
+                    } 
     },
     yAxis: {
-        type: 'value'
+        type: 'value',
+		axisLine:{
+                        lineStyle:{
+                            color:'#000000',
+                            width:2,//这里是为了突出显示加上的
+                        }
+                    }
     },
     series: [{
         data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
         name:'计划',
         type:'line',
         stack: '剩余1',
+        lineStyle:{
+            normal:{
+                width:2,  //连线粗细
+                color: "#0000e3"  //连线颜色
+            }
+        },
     },
     {
         data: [120, 113, 107, 100, 90, 81, 75],
         name:'执行',
         type:'line',
         stack: '剩余2',
+		lineStyle:{
+            normal:{
+                width:2,  //连线粗细
+                color: '#FF0000'
+            }
+        },
     }]
 },
 option2: {
@@ -367,6 +391,31 @@ option6 : {
         }
        }
       },
+	  redline:{
+            normal:{
+                width:2,  //连线粗细
+                color: "#ff0000"  //连线颜色
+            }
+        },
+	  greenline:{
+            normal:{
+                width:2,  //连线粗细
+                color: "#00ec00"  //连线颜色
+            }
+        },
+	  yellowline:{
+            normal:{
+                width:2,  //连线粗细
+                color: "#ffd306"  //连线颜色
+            }
+        },
+	  blueline:{
+            normal:{
+                width:2,  //连线粗细
+                color: "#0000e3"  //连线颜色
+            }
+        },
+	  num:1,
 	  mounted:function(){  
           //echarts.init(document.getElementById('tubiao2')).setOption(this.option2);
 		  //echarts.init(document.getElementById('tubiao3')).setOption(this.option3);
@@ -375,12 +424,78 @@ option6 : {
 		  //echarts.init(document.getElementById('tubiao6')).setOption(this.option6);
 
 		  //setInterval(()=>{this.option2.series[1].data=[120, 113, 107, 100, 90, 81, --this.option2.series[1].data[6]];},1000);
-		  setInterval(()=>{axios.get('/getdata/api/admin/siaserie').then(res=>{this.option1.series=res.data});},5000);
-		  setInterval(()=>{axios.get('/getdata/api/admin/siaserie').then(res=>{this.option2.series=res.data});},5000);
-		  setInterval(()=>{axios.get('/getdata/api/admin/ssaserie').then(res=>{this.option3.series=res.data});},5000);
-		  setInterval(()=>{axios.get('/getdata/api/admin/uapserie').then(res=>{this.option4.series=res.data});},5000);
-		  setInterval(()=>{axios.get('/getdata/api/admin/fortserie').then(res=>{this.option5.series=res.data});},5000);
-		  setInterval(()=>{axios.get('/getdata/api/admin/senserie').then(res=>{this.option6.series=res.data});},5000);
+		  setInterval(()=>{axios.get('/getdata/api/admin/siaserie').then(res=>{this.option1.series=res.data;
+		  this.option1.series[0].lineStyle={normal:{width:2, color: "#0000e3" }};
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
+		     this.option1.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
+			 }
+			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
+			 this.option1.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
+			 }else{
+			 this.option1.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
+			 }
+			 };
+		  });},5000);
+		  setInterval(()=>{axios.get('/getdata/api/admin/siaserie').then(res=>{this.option2.series=res.data;
+		  this.option2.series[0].lineStyle={normal:{width:2, color: "#0000e3" }};
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
+		     this.option2.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
+			 }
+			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
+			 this.option2.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
+			 }else{
+			 this.option2.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
+			 }
+			 };
+		  });},5000);
+		  setInterval(()=>{axios.get('/getdata/api/admin/ssaserie').then(res=>{this.option3.series=res.data;
+		  this.option3.series[0].lineStyle={normal:{width:2, color: "#0000e3" }};
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
+		     this.option3.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
+			 }
+			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
+			 this.option3.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
+			 }else{
+			 this.option3.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
+			 }
+			 };
+		  });},5000);
+		  setInterval(()=>{axios.get('/getdata/api/admin/uapserie').then(res=>{this.option4.series=res.data;
+		  this.option4.series[0].lineStyle={normal:{width:2, color: "#0000e3" }};
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
+		     this.option4.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
+			 }
+			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
+			 this.option4.series[1].lineStyle={normal:{width:2, color: "#ffff00" }};
+			 }else{
+			 this.option4.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
+			 }
+			 };
+		  });},5000);
+		  setInterval(()=>{axios.get('/getdata/api/admin/fortserie').then(res=>{this.option5.series=res.data;
+		  this.option5.series[0].lineStyle={normal:{width:2, color: "#0000e3" }};
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
+		     this.option5.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
+			 }
+			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
+			 this.option5.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
+			 }else{
+			 this.option5.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
+			 }
+			 };
+		  });},5000);
+		  setInterval(()=>{axios.get('/getdata/api/admin/senserie').then(res=>{this.option6.series=res.data;
+		  this.option6.series[0].lineStyle={normal:{width:2, color: "#0000e3" }};
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
+		     this.option6.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
+			 }
+			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
+			 this.option6.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
+			 }else{
+			 this.option6.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
+			 }
+			 };
+		  });},5000);
         } 
      })
 	 
