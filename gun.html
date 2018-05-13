@@ -15,8 +15,10 @@
                  @copy-data="listData = listData.concat(listData)"
                  class="warp">
         <ul class="item">
-          <li v-for="item in listData"><span class="title" v-text="item.title"></span><span class="date"
-                                                   v-text="item.date"></span>
+          <li v-for="item in listData">
+		       <span class="type" v-text="item.type"></span>
+		       <span class="id" v-text="item.id"></span>
+			   <span class="tip" v-text="item.tip"></span>
           </li>
         </ul>
       </vue-seamless-scroll>
@@ -55,134 +57,10 @@
 	   img: 'background-image: url(./timg.jpg);',
 	   //imgapp: 'background-image: url(./backgroundImage.jpg);',
        listData: [{
-        'title': '无缝滚动第一行无缝滚动第一行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第二行无缝滚动第二行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第三行无缝滚动第三行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第四行无缝滚动第四行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第五行无缝滚动第五行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第六行无缝滚动第六行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第七行无缝滚动第七行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第八行无缝滚动第八行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
-       }, {
-        'title': '无缝滚动第九行无缝滚动第九行',
-        'date': '2017-12-16'
+        'type': '故障',
+        'id': 'SSSIA-388',
+		'day': '1',
+		'tip': '已提出1天'
        }],
 	   option1 : {
 	   title: {
@@ -397,7 +275,7 @@ redline:{
 	  yellowline:{
             normal:{
                 width:2,  //连线粗细
-                color: "#ffd306"  //连线颜色
+                color: "#ffff00"  //连线颜色
             }
         },
 	  blueline:{
@@ -425,6 +303,11 @@ redline:{
 		  //echarts.init(document.getElementById('tubiao6')).setOption(this.option6);
 
 		  //setInterval(()=>{this.option2.series[1].data=[120, 113, 107, 100, 90, 81, --this.option2.series[1].data[6]];},1000);
+		  setInterval(()=>{axios.get('/getdata/api/admin/jiras').then(res=>{this.listData=res.data;
+		  for (i=0;i<this.listData.length;i++){
+		  this.listData[i].tip='已提出'+this.listData[i].day+'天';
+		  }
+		  })},20000);
 		  setInterval(()=>{if(this.num%5==0){this.option1=this.option2;this.num++;}
 		  else if (this.num%5==1){this.option1=this.option3;this.num++;}
 		  else if (this.num%5==2){this.option1=this.option4;this.num++;}
@@ -433,7 +316,8 @@ redline:{
 		  
 		  },5000);
 		  setInterval(()=>{axios.get('/getdata/api/admin/siaserie').then(res=>{this.option2.series=res.data;
-		  this.option2.series[0].lineStyle={normal:{width:2, color: "#0000e3" }};
+		  this.option2.series[0].lineStyle=this.blueline;
+		  this.option2.title.text='SIA迭代燃尽图';
 		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
 		     this.option2.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
 			 }
@@ -445,7 +329,8 @@ redline:{
 			 };
 		  });},5000);
 		  setInterval(()=>{axios.get('/getdata/api/admin/ssaserie').then(res=>{this.option3.series=res.data;
-		  this.option3.series[0].lineStyle={normal:{width:2, color: "#0000e3" }};
+		  this.option3.series[0].lineStyle=this.blueline;
+		  this.option3.title.text='SSA迭代燃尽图';
 		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
 		     this.option3.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
 			 }
@@ -457,7 +342,8 @@ redline:{
 			 };
 		  });},5000);
 		  setInterval(()=>{axios.get('/getdata/api/admin/uapserie').then(res=>{this.option4.series=res.data;
-		  this.option4.series[0].lineStyle={normal:{width:2, color: "#0000e3" }};
+		  this.option4.series[0].lineStyle=this.blueline;
+		  this.option4.title.text='UAP迭代燃尽图';
 		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
 		     this.option4.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
 			 }
@@ -469,7 +355,8 @@ redline:{
 			 };
 		  });},5000);
 		  setInterval(()=>{axios.get('/getdata/api/admin/fortserie').then(res=>{this.option5.series=res.data;
-		  this.option5.series[0].lineStyle={normal:{width:2, color: "#0000e3" }};
+		  this.option5.series[0].lineStyle=this.blueline;
+		  this.option5.title.text='FORT迭代燃尽图';
 		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
 		     this.option5.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
 			 }
@@ -481,7 +368,8 @@ redline:{
 			 };
 		  });},5000);
 		  setInterval(()=>{axios.get('/getdata/api/admin/senserie').then(res=>{this.option6.series=res.data;
-		  this.option6.series[0].lineStyle={normal:{width:2, color: "#0000e3" }};
+		  this.option6.series[0].lineStyle=this.blueline;
+		  this.option6.title.text='SEN迭代燃尽图';
 		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
 		     this.option6.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
 			 }
@@ -637,7 +525,7 @@ var option2 = {
         margin: 0 auto;
       }
       .warp li {
-        height: 30px;
+        height:auto;
         line-height: 30px;
         display: flex;
         justify-content: space-between;
