@@ -16,9 +16,9 @@
                  class="warp">
         <ul class="item">
           <li v-for="item in listData">
-		       <span class="type" v-text="item.type"></span>
-		       <span class="id" v-text="item.id"></span>
-			   <span class="tip" v-text="item.tip"></span>
+		       <span class="type" v-text="item.type" :style="item.typestyle"></span>
+		       <span class="id" v-text="item.id" ></span>
+			   <span class="tip" v-text="item.tip" :style="item.tipstyle"></span>
           </li>
         </ul>
       </vue-seamless-scroll>
@@ -54,13 +54,15 @@
      var gun =new Vue({
       el: '#aaa',
       data: {
-	   img: 'background-image: url(./timg.jpg);',
+	   img: 'background-image: url(./bg2.jpg);',
 	   //imgapp: 'background-image: url(./backgroundImage.jpg);',
        listData: [{
         'type': '故障',
         'id': 'SSSIA-388',
 		'day': '1',
-		'tip': '已提出1天'
+		'tip': '已提出1天',
+		'typestyle':'color: #0000000',
+		'tipstyle':'color: #0000000'
        }],
 	   option1 : {
 	   title: {
@@ -306,6 +308,15 @@ redline:{
 		  setInterval(()=>{axios.get('/getdata/api/admin/jiras').then(res=>{this.listData=res.data;
 		  for (i=0;i<this.listData.length;i++){
 		  this.listData[i].tip='已提出'+this.listData[i].day+'天';
+		  if( this.listData[i].type=="故障" ){
+		  this.listData[i].typestyle="color: #003300";
+		  }
+		  if( this.listData[i].type=="BUG" ){
+		  this.listData[i].typestyle="color: #5b4b00";
+		  }
+		  if( this.listData[i].day>4 ){
+		  this.listData[i].tipstyle="color: #ff0000";
+		  }
 		  }
 		  })},20000);
 		  setInterval(()=>{if(this.num%5==0){this.option1=this.option2;this.num++;}
@@ -318,7 +329,7 @@ redline:{
 		  setInterval(()=>{axios.get('/getdata/api/admin/siaserie').then(res=>{this.option2.series=res.data;
 		  this.option2.series[0].lineStyle=this.blueline;
 		  this.option2.title.text='SIA迭代燃尽图';
-		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
 		     this.option2.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
 			 }
 			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
@@ -331,7 +342,7 @@ redline:{
 		  setInterval(()=>{axios.get('/getdata/api/admin/ssaserie').then(res=>{this.option3.series=res.data;
 		  this.option3.series[0].lineStyle=this.blueline;
 		  this.option3.title.text='SSA迭代燃尽图';
-		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
 		     this.option3.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
 			 }
 			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
@@ -357,7 +368,7 @@ redline:{
 		  setInterval(()=>{axios.get('/getdata/api/admin/fortserie').then(res=>{this.option5.series=res.data;
 		  this.option5.series[0].lineStyle=this.blueline;
 		  this.option5.title.text='FORT迭代燃尽图';
-		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
 		     this.option5.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
 			 }
 			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
@@ -370,7 +381,7 @@ redline:{
 		  setInterval(()=>{axios.get('/getdata/api/admin/senserie').then(res=>{this.option6.series=res.data;
 		  this.option6.series[0].lineStyle=this.blueline;
 		  this.option6.title.text='SEN迭代燃尽图';
-		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 4){
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
 		     this.option6.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
 			 }
 			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
