@@ -296,16 +296,75 @@ redline:{
         }
        }
       },
-	  
-	  mounted:function(){  
-          //echarts.init(document.getElementById('tubiao2')).setOption(this.option2);
-		  //echarts.init(document.getElementById('tubiao3')).setOption(this.option3);
-		  //echarts.init(document.getElementById('tubiao4')).setOption(this.option4);
-		  //echarts.init(document.getElementById('tubiao5')).setOption(this.option5);
-		  //echarts.init(document.getElementById('tubiao6')).setOption(this.option6);
-
-		  //setInterval(()=>{this.option2.series[1].data=[120, 113, 107, 100, 90, 81, --this.option2.series[1].data[6]];},1000);
-		  setInterval(()=>{axios.get('/getdata/api/admin/jiras').then(res=>{this.listData=res.data;
+		methods: {
+       getsia: function() {
+          axios.get('/getdata/api/admin/siaserie').then(res=>{this.option2.series=res.data;
+		  this.option2.series[0].lineStyle=this.blueline;
+		  this.option2.title.text='SIA迭代燃尽图';
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
+		     this.option2.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
+			 }
+			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
+			 this.option2.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
+			 }else{
+			 this.option2.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
+			 }
+			 };
+		  });
+    },
+	getssa: function() {axios.get('/getdata/api/admin/ssaserie').then(res=>{this.option3.series=res.data;
+		  this.option3.series[0].lineStyle=this.blueline;
+		  this.option3.title.text='SSA迭代燃尽图';
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
+		     this.option3.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
+			 }
+			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
+			 this.option3.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
+			 }else{
+			 this.option3.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
+			 }
+			 };
+		  });},
+	getuap: function() {axios.get('/getdata/api/admin/uapserie').then(res=>{this.option4.series=res.data;
+		  this.option4.series[0].lineStyle=this.blueline;
+		  this.option4.title.text='UAP迭代燃尽图';
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
+		     this.option4.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
+			 }
+			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
+			 this.option4.series[1].lineStyle={normal:{width:2, color: "#ffff00" }};
+			 }else{
+			 this.option4.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
+			 }
+			 };
+		  });},
+	getfort: function() {axios.get('/getdata/api/admin/fortserie').then(res=>{this.option5.series=res.data;
+		  this.option5.series[0].lineStyle=this.blueline;
+		  this.option5.title.text='FORT迭代燃尽图';
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
+		     this.option5.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
+			 }
+			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
+			 this.option5.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
+			 }else{
+			 this.option5.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
+			 }
+			 };
+		  });},
+	getsen: function() {axios.get('/getdata/api/admin/senserie').then(res=>{this.option6.series=res.data;
+		  this.option6.series[0].lineStyle=this.blueline;
+		  this.option6.title.text='SEN迭代燃尽图';
+		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
+		     this.option6.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
+			 }
+			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
+			 this.option6.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
+			 }else{
+			 this.option6.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
+			 }
+			 };
+		  });},
+	 getjiras: function() {axios.get('/getdata/api/admin/jiras').then(res=>{this.listData=res.data;
 		  for (i=0;i<this.listData.length;i++){
 		  this.listData[i].tip='已提出'+this.listData[i].day+'天';
 		  if( this.listData[i].type=="故障" ){
@@ -318,81 +377,36 @@ redline:{
 		  this.listData[i].tipstyle="color: #ff0000";
 		  }
 		  }
-		  })},20000);
+		  });}
+    },
+	  
+	  mounted:function(){  
+          //echarts.init(document.getElementById('tubiao2')).setOption(this.option2);
+		  //echarts.init(document.getElementById('tubiao3')).setOption(this.option3);
+		  //echarts.init(document.getElementById('tubiao4')).setOption(this.option4);
+		  //echarts.init(document.getElementById('tubiao5')).setOption(this.option5);
+		  //echarts.init(document.getElementById('tubiao6')).setOption(this.option6);
+          
+		  //setInterval(()=>{this.option2.series[1].data=[120, 113, 107, 100, 90, 81, --this.option2.series[1].data[6]];},1000);
+		  this.getjiras();
+		  setInterval(()=>{this.getjiras();},20000);
 		  setInterval(()=>{if(this.num%5==0){this.option1=this.option2;this.num++;}
 		  else if (this.num%5==1){this.option1=this.option3;this.num++;}
 		  else if (this.num%5==2){this.option1=this.option4;this.num++;}
 		  else if (this.num%5==3){this.option1=this.option5;this.num++;}
-		  else{this.option1=this.option6;this.num=0;}
-		  
-		  },5000);
-		  setInterval(()=>{axios.get('/getdata/api/admin/siaserie').then(res=>{this.option2.series=res.data;
-		  this.option2.series[0].lineStyle=this.blueline;
-		  this.option2.title.text='SIA迭代燃尽图';
-		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
-		     this.option2.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
-			 }
-			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
-			 this.option2.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
-			 }else{
-			 this.option2.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
-			 }
-			 };
-		  });},5000);
-		  setInterval(()=>{axios.get('/getdata/api/admin/ssaserie').then(res=>{this.option3.series=res.data;
-		  this.option3.series[0].lineStyle=this.blueline;
-		  this.option3.title.text='SSA迭代燃尽图';
-		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
-		     this.option3.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
-			 }
-			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
-			 this.option3.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
-			 }else{
-			 this.option3.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
-			 }
-			 };
-		  });},5000);
-		  setInterval(()=>{axios.get('/getdata/api/admin/uapserie').then(res=>{this.option4.series=res.data;
-		  this.option4.series[0].lineStyle=this.blueline;
-		  this.option4.title.text='UAP迭代燃尽图';
-		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
-		     this.option4.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
-			 }
-			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
-			 this.option4.series[1].lineStyle={normal:{width:2, color: "#ffff00" }};
-			 }else{
-			 this.option4.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
-			 }
-			 };
-		  });},5000);
-		  setInterval(()=>{axios.get('/getdata/api/admin/fortserie').then(res=>{this.option5.series=res.data;
-		  this.option5.series[0].lineStyle=this.blueline;
-		  this.option5.title.text='FORT迭代燃尽图';
-		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
-		     this.option5.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
-			 }
-			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
-			 this.option5.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
-			 }else{
-			 this.option5.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
-			 }
-			 };
-		  });},5000);
-		  setInterval(()=>{axios.get('/getdata/api/admin/senserie').then(res=>{this.option6.series=res.data;
-		  this.option6.series[0].lineStyle=this.blueline;
-		  this.option6.title.text='SEN迭代燃尽图';
-		  if( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 10){
-		     this.option6.series[1].lineStyle={normal:{width:2, color: "#ff0000" }};
-			 }
-			 else {if ( res.data[1].data[res.data[1].data.length-1] - res.data[0].data[res.data[1].data.length-1] > 1 ){
-			 this.option6.series[1].lineStyle={normal:{width:2, color: "#ffd306" }};
-			 }else{
-			 this.option6.series[1].lineStyle={normal:{width:2, color: "#00ec00" }};
-			 }
-			 };
-		  });},5000);
+		  else{this.option1=this.option6;this.num=0;}},5000);
+		  this.getsia();
+		  setInterval(()=>{this.getsia();},5000);
+		  this.getssa();
+		  setInterval(()=>{this.getssa();},5000);
+		  this.getuap();
+		  setInterval(()=>{this.getuap();},5000);
+		  this.getfort();
+		  setInterval(()=>{this.getfort();},5000);
+		  this.getsen();
+		  setInterval(()=>{this.getsen();},5000);
         } 
-     })
+})
 	 
 	 
 
