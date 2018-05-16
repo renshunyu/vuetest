@@ -1,54 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
-  </head>
-  <body>
-     <div id="aaa" class="img2" :style="img">
-    <div id="app" class="gunk" style="float: left;">
-      <vue-seamless-scroll :data="listData" :class-option="classOption"
-                 @copy-data="listData = listData.concat(listData)"
-                 class="warp">
-        <ul class="item">
-          <li v-for="item in listData">
-		       <span class="type" v-text="item.type" :style="item.typestyle"></span>
-		       <span class="id" v-text="item.id" ></span>
-			   <span class="tip" v-text="item.tip" :style="item.tipstyle"></span>
-          </li>
-        </ul>
-      </vue-seamless-scroll>
-	</div>
-	<div id="tubiao1" class="zhubiao" style="width: 698px;height:498px;float: left;">
-	<chart style="width: 698px;height:498px;float: left;" :options="option1"></chart></div>
-	
-	<div id="tubiao2" class="biao" style="width: 348px;height:248px;float: left;">
-	<chart style="width: 348px;height:248px;" :options="option2"></chart></div>
-	<div id="tubiao3" class="biao" style="width: 348px;height:248px;float: left;">
-	<chart style="width: 348px;height:248px;" :options="option3"></chart></div>
-	<div id="tubiao4" class="biao" style="width: 348px;height:248px;float: left;">
-	<chart style="width: 348px;height:248px;" :options="option4"></chart></div>
-	<div id="tubiao5" class="biao" style="width: 348px;height:248px;float: left;">
-	<chart style="width: 348px;height:248px;" :options="option5"></chart></div>
-	<div id="tubiao6" class="biao" style="width: 348px;height:248px;float: left;">
-	<chart style="width: 348px;height:248px;" :options="option6"></chart></div>
-	<!-- <div id="tubiao7" class="biao" style="width: 348px;height:248px;float: left;"></div> -->
-	<!-- <div id="tubiao8" class="biao" style="width: 348px;height:248px;float: left;"></div> -->
-	<!-- <div id="tubiao9" class="biao" style="width: 348px;height:248px;float: left;"></div> -->
-
-	</div>
-	
-	</div>
-    <script src="./vue.js"></script>
-    <script src="./vue-seamless-scroll.min.js"></script>
-	<script src="./echarts.min.js"></script>
-	<script src="./vue-echarts.js"></script>
-	<script src="./axios.min.js"></script>
-    <script >
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" /> 
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" /> 
+  <title>Document</title> 
+ </head> 
+ <body> 
+  <div id="aaa" class="img2" :style="img"> 
+   <div id="app" class="gunk" style="float: left;"> 
+    <vue-seamless-scroll :data="listData" :class-option="classOption" @copy-data="listData = listData.concat(listData)" class="warp"> 
+     <ul class="item"> 
+      <li v-for="item in listData"> <span class="type" v-text="item.type" :style="item.typestyle"></span> <span class="id" v-text="item.id"></span> <span class="tip" v-text="item.tip" :style="item.tipstyle"></span> </li> 
+     </ul> 
+    </vue-seamless-scroll> 
+   </div> 
+   <div id="tubiao1" class="zhubiao" style="width: 698px;height:498px;float: left;"> 
+    <chart style="width: 698px;height:498px;float: left;" :options="option1"></chart>
+   </div> 
+   <div id="tubiao2" class="biao" style="width: 348px;height:248px;float: left;"> 
+    <chart style="width: 348px;height:248px;" :options="option2"></chart>
+   </div> 
+   <div id="tubiao3" class="biao" style="width: 348px;height:248px;float: left;"> 
+    <chart style="width: 348px;height:248px;" :options="option3"></chart>
+   </div> 
+   <div id="tubiao4" class="biao" style="width: 348px;height:248px;float: left;"> 
+    <chart style="width: 348px;height:248px;" :options="option4"></chart>
+   </div> 
+   <div id="tubiao5" class="biao" style="width: 348px;height:248px;float: left;"> 
+    <chart style="width: 348px;height:248px;" :options="option5"></chart>
+   </div> 
+   <div id="tubiao6" class="biao" style="width: 348px;height:248px;float: left;"> 
+    <chart style="width: 348px;height:248px;" :options="option6"></chart>
+   </div> 
+   <!-- <div id="tubiao7" class="biao" style="width: 348px;height:248px;float: left;"></div> --> 
+   <!-- <div id="tubiao8" class="biao" style="width: 348px;height:248px;float: left;"></div> --> 
+   <!-- <div id="tubiao9" class="biao" style="width: 348px;height:248px;float: left;"></div> --> 
+  </div>  
+  <script src="./vue.js"></script> 
+  <script src="./vue-seamless-scroll.min.js"></script> 
+  <script src="./echarts.min.js"></script> 
+  <script src="./vue-echarts.js"></script> 
+  <script src="./axios.min.js"></script> 
+  <script>
 
 	Vue.component('chart', VueECharts)
      var gun =new Vue({
@@ -93,7 +87,7 @@
                     }
     },
     series: [{
-        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        data: [],
         name:'计划',
         type:'line',
         stack: '剩余1',
@@ -105,7 +99,7 @@
         },
     },
     {
-        data: [120, 113, 107, 100, 90, 81, 75],
+        data: [],
         name:'执行',
         type:'line',
         stack: '剩余2',
@@ -134,13 +128,13 @@ option2: {
         type: 'value'
     },
     series: [{
-        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        data: [],
         name:'计划',
         type:'line',
         stack: '剩余1',
     },
     {
-        data: [60, 113, 107, 100, 90, 81, 75],
+        data: [],
         name:'执行',
         type:'line',
         stack: '剩余2',
@@ -163,13 +157,13 @@ option3 : {
         type: 'value'
     },
     series: [{
-        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        data: [],
         name:'计划',
         type:'line',
         stack: '剩余1',
     },
     {
-        data: [120, 13, 107, 100, 90, 81, 75],
+        data: [],
         name:'执行',
         type:'line',
         stack: '剩余2',
@@ -192,13 +186,13 @@ option4 : {
         type: 'value'
     },
     series: [{
-        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        data: [],
         name:'计划',
         type:'line',
         stack: '剩余1',
     },
     {
-        data: [120, 113, 14, 100, 90, 81, 75],
+        data: [],
         name:'执行',
         type:'line',
         stack: '剩余2',
@@ -221,13 +215,13 @@ option5 : {
         type: 'value'
     },
     series: [{
-        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        data: [],
         name:'计划',
         type:'line',
         stack: '剩余1',
     },
     {
-        data: [120, 113, 107, 3, 90, 81, 75],
+        data: [],
         name:'执行',
         type:'line',
         stack: '剩余2',
@@ -250,13 +244,13 @@ option6 : {
         type: 'value'
     },
     series: [{
-        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        data: [],
         name:'计划',
         type:'line',
         stack: '剩余1',
     },
     {
-        data: [120, 113, 107, 100, 5, 81, 75],
+        data: [],
         name:'执行',
         type:'line',
         stack: '剩余2',
@@ -389,12 +383,7 @@ redline:{
           
 		  //setInterval(()=>{this.option2.series[1].data=[120, 113, 107, 100, 90, 81, --this.option2.series[1].data[6]];},1000);
 		  this.getjiras();
-		  setInterval(()=>{this.getjiras();},20000);
-		  setInterval(()=>{if(this.num%5==0){this.option1=this.option2;this.num++;}
-		  else if (this.num%5==1){this.option1=this.option3;this.num++;}
-		  else if (this.num%5==2){this.option1=this.option4;this.num++;}
-		  else if (this.num%5==3){this.option1=this.option5;this.num++;}
-		  else{this.option1=this.option6;this.num=0;}},5000);
+		  setInterval(()=>{this.getjiras();},300000);
 		  this.getsia();
 		  setInterval(()=>{this.getsia();},5000);
 		  this.getssa();
@@ -405,6 +394,12 @@ redline:{
 		  setInterval(()=>{this.getfort();},5000);
 		  this.getsen();
 		  setInterval(()=>{this.getsen();},5000);
+		  this.option1=this.option5;
+		  setInterval(()=>{if(this.num%5==0){this.option1=this.option2;this.num++;}
+		  else if (this.num%5==1){this.option1=this.option3;this.num++;}
+		  else if (this.num%5==2){this.option1=this.option4;this.num++;}
+		  else if (this.num%5==3){this.option1=this.option5;this.num++;}
+		  else{this.option1=this.option6;this.num=0;}},5000);
         } 
 })
 	 
@@ -452,7 +447,7 @@ var option2 = {
         type: 'value'
     },
     series: [{
-        data: [120, 112, 8*13, 8*12, 8*11, 8*10, 8*9, 8*8, 8*7, 8*6, 8*5, 8*4, 8*3, 8*2, 8*1, 8*0],
+        data: [],
         name:'计划',
         type:'line',
         stack: '剩余1',
@@ -479,8 +474,8 @@ var option2 = {
 //echarts.init(document.getElementById('tubiao8')).setOption(option1);
 //echarts.init(document.getElementById('tubiao9')).setOption(option1);
 
-    </script>
-<style>
+    </script> 
+  <style>
 		#aaa {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -556,6 +551,6 @@ var option2 = {
         justify-content: space-between;
         font-size: 15px;
       }
-    </style>
-  </body>
+    </style>  
+ </body>
 </html>
